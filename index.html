@@ -5,14 +5,23 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Tool Box</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-	<!--<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />-->
-	<!--<script defer src="https://pyscript.net/latest/pyscript.js"></script>-->
+	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
+
+	<py-script>
+		height = Element("height")
+		weight = Element("weight")
+		val = document.querySelector("#value")
+
+		
+	</py-script>
+
 <div class="shadow p-3 mb-5 bg-body rounded text-center fs-3">
 	Tool Box <span class="fs-6 text-grey fw-light">Made With Py-Script</span>
 </div>
-<div class="accordion" id="accordionExample">
+<div class="accordion shadow-none" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -20,8 +29,24 @@
       </button>
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        Test
+      <div class="accordion-body d-flex">
+       <input id="weight" class="form-control" style="box-shadow: none;width: 120px;" type="number" name="weight" value="" placeholder="weight(kg)">
+       <input id="height" class="form-control" style="box-shadow: none;width: 120px;margin-left: 10px;margin-right: 10px;" type="number" name="height" value="" placeholder="height(m)">
+       <py-button label="Submit" styles="btn big" style="margin-right: 10px;">
+
+				def on_click(event):
+					if weight.value and height.value != "":
+						result = int(weight.value)/(int(height.value)*int(height.value))*10000
+						val.innerText = round(result,1)
+					else:
+						val.innerText = "Enter Values"
+						
+					height.clear()
+					weight.clear()
+					
+					
+		</py-button>
+		<h4 id="value"></h4>
       </div>
     </div>
   </div>
@@ -32,8 +57,18 @@
       </button>
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        Test
+      <div class="accordion-body d-flex">
+        <input id="temail" class="form-control" style="box-shadow: none;width: 120px;" type="email" placeholder="To:Email">
+        <input id="femail" class="form-control" style="box-shadow: none;width: 120px;margin-left: 10px;" type="email" placeholder="From:Email">
+        <input id="password" class="form-control" style="box-shadow: none;width: 120px;margin-left: 10px;" type="password" placeholder="password">
+        <input id="title" class="form-control" style="box-shadow: none;width: 120px;margin-left: 10px;"
+        type="text" placeholder="title">
+       <input id="body" class="form-control" style="box-shadow: none;width: 400px;margin-left: 10px;margin-right: 10px;" type="text" placeholder="body">
+
+       <py-button label="Send" styles="btn big">
+
+					
+		</py-button>
       </div>
     </div>
   </div>
@@ -45,7 +80,7 @@
     </h2>
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <py-repl></py-repl>
+        <py-repl auto-generate="true">print("Hello World")</py-repl>
       </div>
     </div>
   </div>
