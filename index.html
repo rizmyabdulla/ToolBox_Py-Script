@@ -80,7 +80,18 @@
         <input id="password" class="form-control" style="box-shadow: none;width: 120px;margin-left: 10px;" type="password" placeholder="password">
        <input id="body" class="form-control" style="box-shadow: none;width: 400px;margin-left: 10px;margin-right: 10px;" type="text" placeholder="body">
 
-       <py-button label="Send" styles="btn big"></py-button>
+       <py-button label="Send" styles="btn big">
+     def on_click(event):
+        import smtplib
+
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        server.login(femail, password)
+        server.sendmail(
+         femail, 
+         temail, 
+         body)
+        server.quit()
+       </py-button>
       </div>
     </div>
   </div>
