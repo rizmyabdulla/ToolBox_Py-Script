@@ -9,12 +9,29 @@
 	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <body>
+  <py-config type="json">
+    
+    {
+    "autoclose_loader": true,
+    "fetch": [{
+    "files": ["./smtplib.py"]
+    }],
+    "runtimes": [{
+    "src": "https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js",
+    "name": "pyodide-0.21.3",
+    "lang": "python"
+    }]
+    }
+  </py-config>
 
 	<py-script>
-		height = Element("height")
-		weight = Element("weight")
-		val = document.querySelector("#value")
-
+    height = Element("height")
+    weight = Element("weight")
+    val = document.querySelector("#value")
+    temail = Element("temail")
+    femail = Element("femail")
+    password = Element("password")
+    body = Element("body")
 		
 	</py-script>
 
@@ -61,14 +78,9 @@
         <input id="temail" class="form-control" style="box-shadow: none;width: 120px;" type="email" placeholder="To:Email">
         <input id="femail" class="form-control" style="box-shadow: none;width: 120px;margin-left: 10px;" type="email" placeholder="From:Email">
         <input id="password" class="form-control" style="box-shadow: none;width: 120px;margin-left: 10px;" type="password" placeholder="password">
-        <input id="title" class="form-control" style="box-shadow: none;width: 120px;margin-left: 10px;"
-        type="text" placeholder="title">
        <input id="body" class="form-control" style="box-shadow: none;width: 400px;margin-left: 10px;margin-right: 10px;" type="text" placeholder="body">
 
-       <py-button label="Send" styles="btn big">
-
-					
-		</py-button>
+       <py-button label="Send" styles="btn big"></py-button>
       </div>
     </div>
   </div>
